@@ -1,5 +1,5 @@
 
-<html lang="en">
+<html lang="tr">
 
 <head>
 
@@ -9,12 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Şah Panel 2</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -27,9 +32,8 @@
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?metot=index">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-crown"></i>
         </div>
@@ -41,7 +45,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link"href="index.php?metot=index">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Yönetim Paneli</span></a>
       </li>
@@ -133,9 +137,7 @@
             
           </div>
           <!-- Burası content -->
-          <p>
-            Şah yönetim paneli şirket yönetiminde sizin hep bir adım önde olmanızı sağlar. 
-          </p>
+   
           
           <?php 
           include "controller.php";
@@ -144,6 +146,17 @@
                   magaza();
             else if ($_GET['metot']== "personel")
                 personel();
+            else if($_GET["metot"] == "index"){
+            echo " <p>
+                     Şah yönetim paneli şirket yönetiminde sizin hep bir adım önde olmanızı sağlar. 
+                 </p>";
+            }
+            else if ($_GET["metot"] == "yeni-magaza-index")
+            {
+              yeniMagazaIndex();
+            }
+          }else if(isset($_POST['yeniMagaza'])){
+            yeniMagaza($_POST['name'], $_POST['address']);
           }
           ?>
         </div>
