@@ -145,7 +145,7 @@
              if($_GET["metot"] =="magaza")
                   magaza();
             else if ($_GET['metot']== "personel")
-                personel();
+                personelList();
             else if($_GET["metot"] == "index"){
             echo " <p>
                      Şah yönetim paneli şirket yönetiminde sizin hep bir adım önde olmanızı sağlar. 
@@ -155,8 +155,14 @@
             {
               yeniMagazaIndex();
             }
+            else if($_GET["metot"] == "yeni-calisan-index") {
+              yeniPersonelIndex();
+            }
           }else if(isset($_POST['yeniMagaza'])){
             yeniMagaza($_POST['name'], $_POST['address']);
+          }
+          else if (isset($_POST['yeniPersonel'])) {
+            yeniPersonel($_POST['name_surname'], $_POST['salary'], $_POST['store_id'],  $_POST['duty_id'],$_POST['education_level']);
           }
           ?>
         </div>
